@@ -98,7 +98,7 @@ function component(width, height, color, x, y, type) {
 }
 function updateGameArea() {
     if (floor.crashWith(soap)){
-    soap.type = "";
+    myGameArea.stop();
     }
  
     myGameArea.clear();
