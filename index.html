@@ -17,7 +17,7 @@ function startGame() {
     myGamePiece = new component(200, 200, "https://raw.githubusercontent.com/20ramachandrana/AmphieGame/master/pixil-layer-Background.png", -40, 90, "image");
     floor = new component(420, 70, "green", 0, 20, "");
     soap = new component(200, 200, "https://raw.githubusercontent.com/20ramachandrana/AmphieGame/master/egg.png", 4, 20, "image"); 
-    
+
     myGameArea.start();
 }
 var myGameArea = {
@@ -77,29 +77,8 @@ function component(width, height, color, x, y, type) {
       this.gravitySpeed = -(this.gravitySpeed * this.bounce);
     }
   }
-  this.crashWith = function(otherobj) {
-    var myleft = this.x;
-    var myright = this.x + (this.width);
-    var mytop = this.y;
-    var mybottom = this.y + (this.height);
-    var otherleft = otherobj.x;
-    var otherright = otherobj.x + (otherobj.width);
-    var othertop = otherobj.y;
-    var otherbottom = otherobj.y + (otherobj.height);
-    var crash = true;
-    if ((mybottom < othertop) ||
-    (mytop > otherbottom) ||
-    (myright < otherleft) ||
-    (myleft > otherright)) {
-      crash = false;
-    }
-    return crash;
-  }
 }
 function updateGameArea() {
-    if (floor.crashWith(soap)){
-    myGameArea.stop();
-    }
  
     myGameArea.clear();
     myGamePiece.newPos();
