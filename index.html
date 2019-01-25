@@ -15,7 +15,7 @@ var floor;
 
 var soap;
 function startGame() {
-    myGamePiece = new component(200, 200, "https://raw.githubusercontent.com/20ramachandrana/AmphieGame/master/pixil-layer-Background.png", -40, 430 "image");
+    myGamePiece = new component(200, 200, "https://raw.githubusercontent.com/20ramachandrana/AmphieGame/master/pixil-layer-Background.png", -40, 430, "image");
     floor = new component(420, 40, "green", 0, 210, "");
     soap = new component(200, 200, "https://raw.githubusercontent.com/20ramachandrana/AmphieGame/master/egg.png", 4, 20, "image"); 
 
@@ -109,6 +109,5 @@ function clearmove() {
   <button onmousedown="moveleft()" onmouseup="clearmove()" ontouchstart="moveleft()">LEFT</button>
   <button onmousedown="moveright()" onmouseup="clearmove()" ontouchstart="moveright()">RIGHT</button><br><br>
 </div>
-
 </body>
 </html>
