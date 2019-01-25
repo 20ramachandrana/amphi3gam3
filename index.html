@@ -12,11 +12,10 @@ canvas {
 <script>
 var myGamePiece;
 var floor;
-
 var soap;
 function startGame() {
     myGamePiece = new component(200, 200, "https://raw.githubusercontent.com/20ramachandrana/AmphieGame/master/pixil-layer-Background.png", -40, 500, "image");
-    floor = new component(420, 70, "green", 0, 210, "");
+    floor = new component(420, 70, "green", 0, 160, "");
     soap = new component(200, 200, "https://raw.githubusercontent.com/20ramachandrana/AmphieGame/master/egg.png", 4, 20, "image"); 
     myGameArea.start();
 }
@@ -24,7 +23,7 @@ var myGameArea = {
     canvas : document.createElement("canvas"),
     start : function() {
         this.canvas.width = 420;
-        this.canvas.height = 250;
+        this.canvas.height = 160;
         this.context = this.canvas.getContext("2d");
         document.body.insertBefore(this.canvas, document.body.childNodes[0]);
         this.frameNo = 0;
