@@ -12,11 +12,13 @@ canvas {
 <script>
 var myGamePiece;
 var floor;
+var platfom;
 var soap;
 function startGame() {
     floor = new component(420, 50, "green", 0, 200, "");
     myGamePiece = new component(200, 200, "https://raw.githubusercontent.com/20ramachandrana/AmphieGame/master/pixil-layer-Background.png", -40, 500, "image");
     soap = new component(200, 200, "https://raw.githubusercontent.com/20ramachandrana/AmphieGame/master/egg.png", 4, 20, "image"); 
+    platfom = new component(30, 20, "chartreuse", 20, 30, "");
     myGameArea.start();
 }
 var myGameArea = {
@@ -84,6 +86,7 @@ function updateGameArea() {
     myGamePiece.update();
     floor.update();
     soap.update();
+    platfom.update();
 }
 function moveup() {
     myGamePiece.speedY = -1; 
