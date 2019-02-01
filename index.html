@@ -79,8 +79,8 @@ function component(width, height, color, x, y, type) {
       this.gravitySpeed = -(this.gravitySpeed * this.bounce);
     }
   }
-  this.collidesWith = function(otherObject){
-      if (((this.x + this.width) < otherObject.x) || ((this.x)>(otherObject.x + otherObject.width)) || ((this.y)>(otherObject.y + otherObject.height)) ||((this.y + this.height)<(otherObject.y)))
+  this.collidesWith = function(otherobject){
+      if (((this.x + this.width) < otherobject.x) || ((this.x)>(otherobject.x + otherobject.width)) || ((this.y)>(otherobject.y + otherobject.height)) ||((this.y + this.height)<(otherobject.y)))
           {
       return false;
           }
