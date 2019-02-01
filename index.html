@@ -79,25 +79,36 @@ function component(width, height, color, x, y, type) {
       this.gravitySpeed = -(this.gravitySpeed * this.bounce);
     }
   }
- // this.collidesWith = function(otherobject){
-   //   if (((this.x + this.width) < otherobject.x) || ((this.x)>(otherobject.x + otherobject.width)) || ((this.y)>(otherobject.y + otherobject.height)) ||((this.y + this.height)<(otherobject.y)))
-   //       {
- //     return false;
-  //        }
-  //    else return true;
- //         }
+ this.crashWith = function(otherobj) {
+    var myleft = this.x;
+    var myright = this.x + (this.width);
+    var mytop = this.y;
+    var mybottom = this.y + (this.height);
+    var otherleft = otherobj.x;
+    var otherright = otherobj.x + (otherobj.width);
+    var othertop = otherobj.y;
+    var otherbottom = otherobj.y + (otherobj.height);
+    var crash = true;
+    if ((mybottom < othertop) ||
+    (mytop > otherbottom) ||
+    (myright < otherleft) ||
+    (myleft > otherright)) {
+      crash = false;
+    }
+    return crash;
+  }
 function updateGameArea() {
-// if (myGamePiece.collidesWith(platfom)){
- //    platfom.x+=4;
-// }
- //else{
+if (myGamePiece.crashWith(platfom)){
+    platfom.x+=4;
+}
+ else{
     myGameArea.clear();
     myGamePiece.newPos();
     myGamePiece.update();
     floor.update();
     soap.update();
     platfom.update();
-//}
+}
       }
 function moveup() {
     myGamePiece.speedY = -1; 
