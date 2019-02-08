@@ -114,7 +114,143 @@ function clearmove() {
     myGamePiece.speedX = 0; 
     myGamePiece.speedY = 0; 
 }
+</script><html> 
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<style>
+canvas {
+    border:1px solid #d3d3d3;
+    background-color: #00bfff;
+}
+</style>
+</head>
+<body onload="startGame()">
+<script>
+var myGamePiece;
+var floor;
+var platfom;
+var soap;
+function startGame() {
+    floor = new component(420, 50, "green", 0, 200, "");
+    myGamePiece = new component(200, 200, "https://raw.githubusercontent.com/20ramachandrana/AmphieGame/master/pixil-layer-Background.png", -40, 500, "image");
+    soap = new component(200, 200, "https://raw.githubusercontent.com/20ramachandrana/AmphieGame/master/egg.png", 4, 20, "image"); 
+    platfom = new component(90, 20, "chartreuse", 200, 100, "");
+    
+    myGameArea.start();
+}
+var myGameArea = {
+    canvas : document.createElement("canvas"),
+    start : function() {
+        this.canvas.width = 420;
+        this.canvas.height = 250;
+        this.context = this.canvas.getContext("2d");
+        document.body.insertBefore(this.canvas, document.body.childNodes[0]);
+        this.frameNo = 0;
+        this.interval = setInterval(updateGameArea, 20);
+        },
+    clear : function() {
+        this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
+    },
+    stop : function() {
+        clearInterval(this.interval);
+    }
+}
+function component(width, height, color, x, y, type) {
+    this.type = type;
+    if (type == "image") {
+        this.image = new Image();
+        this.image.src = color;
+    }
+    this.width = width;
+    this.height = height;
+    this.speedX = 0;
+    this.speedY = 0;    
+    this.x = x;
+    this.y = y;
+   this.gravity = 0.1;
+  this.gravitySpeed = 0;
+  this.bounce = .5; 
+  this.update = function() {
+        ctx = myGameArea.context;
+        if (type == "image") {
+            ctx.drawImage(this.image, 
+                this.x, 
+                this.y,
+                this.width, this.height);
+        } else {
+            ctx.fillStyle = color;
+            ctx.fillRect(this.x, this.y, this.width, this.height);
+        }
+    }
+   this.newPos = function() {
+    this.gravitySpeed += this.gravity;
+    this.x += this.speedX;
+    this.y += this.speedY + this.gravitySpeed;
+    this.hitBottom();
+  }
+  this.hitBottom = function() {
+    var rockbottom = myGameArea.canvas.height - this.height;
+    if (this.y > rockbottom) {
+      this.y = rockbottom;
+      this.gravitySpeed = -(this.gravitySpeed * this.bounce);
+    }
+  }
+ this.crashWith = function(otherobj) {
+    var myleft = this.x;
+    var myright = this.x + (this.width);
+    var mytop = this.y;
+    var mybottom = this.y + (this.height);
+    var otherleft = otherobj.x;
+    var otherright = otherobj.x + (otherobj.width);
+    var othertop = otherobj.y;
+    var otherbottom = otherobj.y + (otherobj.height);
+    var crash = true;
+    if ((mybottom < othertop) ||
+    (mytop > otherbottom) ||
+    (myright < otherleft) ||
+    (myleft > otherright)) {
+      crash = false;
+    }
+    return crash;
+  }
+}
+function updateGameArea() {
+if (myGamePiece.crashWith(platfom)){
+    platfom.x+=4;
+}
+ else{
+    myGameArea.clear();
+    myGamePiece.newPos();
+    myGamePiece.update();
+    floor.update();
+    soap.update();
+    platfom.update();
+}
+      }
+function moveup() {
+    myGamePiece.speedY = -1; 
+}
+function movedown() {
+    myGamePiece.speedY = 1; 
+}
+function moveleft() {
+    myGamePiece.speedX = -1; 
+}
+function moveright() {
+    myGamePiece.speedX = 1; 
+}
+function clearmove() {
+    myGamePiece.speedX = 0; 
+    myGamePiece.speedY = 0; 
+}
 </script>
+<div style="text-align:center;width:480px;">
+  <button onmousedown="moveup()" onmouseup="clearmove()" ontouchstart="moveup()">UP</button><br><br>
+  <button onmousedown="moveleft()" onmouseup="clearmove()" ontouchstart="moveleft()">LEFT</button>
+  <button onmousedown="moveright()" onmouseup="clearmove()" ontouchstart="moveright()">RIGHT</button><br><br>
+</div>
+</body>
+</html>
 <div style="text-align:center;width:480px;">
   <button onmousedown="moveup()" onmouseup="clearmove()" ontouchstart="moveup()">UP</button><br><br>
   <button onmousedown="moveleft()" onmouseup="clearmove()" ontouchstart="moveleft()">LEFT</button>
