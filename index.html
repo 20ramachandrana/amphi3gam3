@@ -216,7 +216,7 @@ function component(width, height, color, x, y, type) {
 }
 function updateGameArea() {
 if (myGamePiece.crashWith(platfom)){
-    platfom.x+=4;
+    platfom.color = "crimson"; 
 }
  else{
     myGameArea.clear();
