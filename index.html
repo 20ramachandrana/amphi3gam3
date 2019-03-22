@@ -10,7 +10,7 @@ canvas {
  <img id="nickelodeon_princess" src="https://raw.githubusercontent.com/20ramachandrana/amphi3gam3/master/pixil-frame-0%20(1).png">
  <img id="leaf_princess" src="https://raw.githubusercontent.com/20ramachandrana/amphi3gam3/master/leafprincess.png">
 </head>
-<body onload="startGame()">
+<body onload="startGame()" onkeydown="myFunction(event)">
 <script>
 var myGamePiece;
 var floor;
@@ -112,7 +112,7 @@ function clearmove() {
     myGamePiece.speedY = 0; 
 }
 </script>
-<div style="text-align:center;width:480px;" onkeydown="myFunction(event)">
+<div style="text-align:center;width:480px;">
     <br>
     <button onmousedown="moveup()" onmouseup="clearmove()" ontouchstart="moveup()">UP</button><br><br>
   <button onmousedown="moveleft()" onmouseup="clearmove()" ontouchstart="moveleft()">LEFT</button>
