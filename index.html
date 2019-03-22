@@ -11,8 +11,10 @@ canvas {
 <body onload="startGame()">
 <script>
 var myGamePiece;
+var floor; 
 function startGame() {
     myGamePiece = new component(44, 84, "https://raw.githubusercontent.com/20ramachandrana/amphi3gam3/master/pixil-frame-0%20(1).png", 20, 400, 30, "image");
+    floor = new component(420, 30, "chartreuse", 0, 220, 0, "");
     myGameArea.start();
 }
 var myGameArea = {
@@ -79,6 +81,8 @@ function updateGameArea() {
     myGameArea.clear();
     myGamePiece.newPos();
     myGamePiece.update();
+    floor.newPos();
+    floor.update();
 }
 function moveup() {
     myGamePiece.speedY = -1; 
