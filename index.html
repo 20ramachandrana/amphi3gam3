@@ -11,14 +11,8 @@ canvas {
 <body onload="startGame()">
 <script>
 var myGamePiece;
-var floor;
-var platfom;
-var soap;
 function startGame() {
     myGamePiece = new component(44, 84, "https://raw.githubusercontent.com/20ramachandrana/amphi3gam3/master/pixil-frame-0%20(1).png", 20, 400, "image");
-    soap = new component(45, 25, "https://raw.githubusercontent.com/20ramachandrana/amphi3gam3/master/pixil-frame-0.png", 4, 20, "image"); 
-    platfom = new component(70, 30, "chartreuse", 20, 100, "");
-    soap.addEventListener
     myGameArea.start();
 }
 var myGameArea = {
@@ -84,9 +78,6 @@ function updateGameArea() {
     myGameArea.clear();
     myGamePiece.newPos();
     myGamePiece.update();
-    floor.update();
-    soap.update();
-    platfom.update();
 }
 function moveup() {
     myGamePiece.speedY = -1; 
@@ -107,7 +98,6 @@ function clearmove() {
 </script>
 <div style="text-align:center;width:480px;">
     <br>
- <iframe width="5" height="5" src="https://www.youtube.com/embed/GJY8OMJXRAk?autoplay=1" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>      <iframe width="1" height="1" autoplay src="https://www.youtube.com/embed/GJY8OMJXRAk" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
     <button onmousedown="moveup()" onmouseup="clearmove()" ontouchstart="moveup()">UP</button><br><br>
   <button onmousedown="moveleft()" onmouseup="clearmove()" ontouchstart="moveleft()">LEFT</button>
   <button onmousedown="moveright()" onmouseup="clearmove()" ontouchstart="moveright()">RIGHT</button><br><br>
