@@ -7,6 +7,8 @@ canvas {
     background-color: #00bfff;
 }
 </style>
+<img hidden id="nickelodeon_princess" src="https://raw.githubusercontent.com/20ramachandrana/amphi3gam3/master/pixil-frame-0%20(1).png">
+ <img hidden id="leaf_princess" src="https://raw.githubusercontent.com/20ramachandrana/amphi3gam3/master/leafprincess.png">
 </head>
 <body onload="startGame()" onkeydown="myFunction(event)">
 <script>
@@ -79,15 +81,7 @@ function component(width, height, color, x, y, offset, type) {
       this.gravitySpeed = -(this.gravitySpeed * this.bounce);
     }
   }
-}
-   function myFunction(event) {
-  var x = event.key;
-  if (x == "e"){
-            counter = counter+1;
-        myGameArea.image.src = document.images.item(counter).src;
-      
-  }
-}
+}  
 function updateGameArea() {
  
     myGameArea.clear();
@@ -105,16 +99,47 @@ function moveleft() {
 function moveright() {
     myGamePiece.speedX = 1; 
 }
-function clearmove() {
+function clearmove() { 
     myGamePiece.speedX = 0; 
     myGamePiece.speedY = 0; 
 }
+window.onkeyup = function (e) {
+    var code = e.keyCode ? e.keyCode : e.which;
+    if (code == 69) {
+        counter = counter+1;
+        if(counter>1){
+            counter = 0;
+        }
+        myGamePiece.image.src = document.images.item(counter).src;
+        myGamePiece.update();
+    } 
+    else if (code == 13){
+    window.onkeydown = function (e) {
+         window.onkeyup = function(e){
+            }  ; 
+             var code = e.keyCode ? e.keyCode : e.which;
+            if (code == 39) {
+      moveright();
+            window.onkeyup = function(e){
+                clearmove();
+            }  ; 
+    } 
+        else if (code == 37) {
+      moveleft();
+            window.onkeyup = function(e){
+                clearmove();
+            }  ; 
+    } 
+        else if (code == 38) {
+      moveup();
+            window.onkeyup = function(e){
+                clearmove();
+            }  ; 
+    } 
+        };
+        
+    }
+};    
 </script>
-<div style="text-align:center;width:480px;">
-    <br>
-    <button onmousedown="moveup()" onmouseup="clearmove()" ontouchstart="moveup()">UP</button><br><br>
-  <button onmousedown="moveleft()" onmouseup="clearmove()" ontouchstart="moveleft()">LEFT</button>
-  <button onmousedown="moveright()" onmouseup="clearmove()" ontouchstart="moveright()">RIGHT</button><br><br>
-    </div>
     </body>
 </html>
