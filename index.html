@@ -12,7 +12,7 @@ canvas {
 <script>
 var myGamePiece;
 function startGame() {
-    myGamePiece = new component(44, 84, "https://raw.githubusercontent.com/20ramachandrana/amphi3gam3/master/pixil-frame-0%20(1).png", 20, 400, "image");
+    myGamePiece = new component(44, 84, "https://raw.githubusercontent.com/20ramachandrana/amphi3gam3/master/pixil-frame-0%20(1).png", 20, 400, 30, "image");
     myGameArea.start();
 }
 var myGameArea = {
@@ -32,7 +32,7 @@ var myGameArea = {
         clearInterval(this.interval);
     }
 }
-function component(width, height, color, x, y, type) {
+function component(width, height, color, x, y, offset, type) {
     this.type = type;
     if (type == "image") {
         this.image = new Image();
@@ -66,7 +66,7 @@ function component(width, height, color, x, y, type) {
     this.hitBottom();
   }
   this.hitBottom = function() {
-    var rockbottom = myGameArea.canvas.height - this.height;
+    var rockbottom = myGameArea.canvas.height - this.offset - this.height;
     if (this.y > rockbottom) {
       this.y = rockbottom;
       this.gravitySpeed = -(this.gravitySpeed * this.bounce);
