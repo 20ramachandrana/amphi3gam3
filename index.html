@@ -10,7 +10,13 @@ canvas {
  <img hidden id="leaf_princess" src="https://raw.githubusercontent.com/20ramachandrana/amphi3gam3/master/leafprincess.png">
  <img hidden id="corn_princess" src="https://raw.githubusercontent.com/20ramachandrana/amphi3gam3/master/corny.png">
   </head>
-<body onload="startGame()" onkeydown="myFunction(event)">
+<body onload="startGame()">
+    <br>
+<button id = "morphButton"></button>
+<button id = "stopMorph"></button>
+<button id = "bbbb"></button>
+<button id = "aaaa"></button>
+<button id = "cccc"></button> 
 <script>
 var myGamePiece;
 var floor;
@@ -29,6 +35,7 @@ var myGameArea = {
         document.body.insertBefore(this.canvas, document.body.childNodes[0]);
         this.frameNo = 0;
         this.interval = setInterval(updateGameArea, 20);
+        ifMobile();
         },
     clear : function() {
         this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
@@ -90,28 +97,20 @@ function updateGameArea() {
     floor.newPos();
     floor.update();
 }
-function moveup() {
-    myGamePiece.speedY = -1; 
-}
-function moveleft() {
-    myGamePiece.speedX = -1; 
-}
-function moveright() {
-    myGamePiece.speedX = 1; 
-}
-function clearmove() { 
-    myGamePiece.speedX = 0; 
-    myGamePiece.speedY = 0; 
-}
-window.onkeyup = function (e) {
-    var code = e.keyCode ? e.keyCode : e.which;
-    if (code == 69) {
-        counter = counter+1;
+function changeCostume(){
+    counter = counter+1;
         if(counter>2){
             counter = 0;
         }
         myGamePiece.image.src = document.images.item(counter).src;
         myGamePiece.update();
+}
+function ifMobile(){
+    if(screen.width>1100){
+        window.onkeyup = function (e) {
+    var code = e.keyCode ? e.keyCode : e.which;
+    if (code == 69) {
+       changeCostume();
     } 
     else if (code == 13){
     window.onkeydown = function (e) {
@@ -139,7 +138,57 @@ window.onkeyup = function (e) {
         };
         
     }
-};    
+}; 
+    }
+      else{
+          
+                     var leftButton = document.createElement("left");
+          var leftTxt = document.createTextNode("LEFT");
+          leftButton.appendChild(leftTxt);
+          document.getElementById("bbbb").appendChild(leftButton);
+        leftButton.onmousedown = function(){
+            moveleft();
+        };
+          leftButton.onmouseup =  function(){
+            clearmove();
+        };
+
+          var upButton = document.createElement("up");
+          var upTxt = document.createTextNode("UP");
+          upButton.appendChild(upTxt);
+          document.getElementById("aaaa").appendChild(upButton);
+        upButton.onmousedown = function(){
+            moveup();
+        };
+          upButton.onmouseup =  function(){
+            clearmove();
+        };
+          var rightButton = document.createElement("right");
+          var rightTxt = document.createTextNode("RIGHT");
+          rightButton.appendChild(rightTxt);
+          document.getElementById("cccc").appendChild(rightButton);
+        rightButton.onmousedown = function(){
+            moveright();
+        };
+          rightButton.onmouseup =  function(){
+            clearmove();
+        };
+      } 
+}
+function moveup() {
+    myGamePiece.speedY = -1; 
+}
+function moveleft() {
+    myGamePiece.speedX = -1; 
+}
+function moveright() {
+    myGamePiece.speedX = 1; 
+}
+function clearmove() { 
+    myGamePiece.speedX = 0; 
+    myGamePiece.speedY = 0; 
+}
+
 </script>
     </body>
 </html>
