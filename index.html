@@ -150,7 +150,8 @@ function ifMobile(){
    
         $("left").click(function(){
       $("left").on("click", moveleft());        
-      $("left").off("click", clearmove());
+      $("left").off("click");
+            clearmove();
 });  
           leftButton.onmouseup =  function(){
             clearmove();
