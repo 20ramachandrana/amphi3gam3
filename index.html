@@ -148,7 +148,7 @@ function ifMobile(){
           leftButton.appendChild(leftTxt);
           document.getElementById("bbbb").appendChild(leftButton);
        $("left").on("click", moveleft());
-       
+       $("left").off("click", clearmove());
           leftButton.onmouseup =  function(){
             clearmove();
         };
