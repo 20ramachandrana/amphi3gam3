@@ -149,7 +149,6 @@ function ifMobile(){
           document.getElementById("bbbb").appendChild(leftButton);
    
         $("left").click(function(){
-  $("left").off("click");
         moveleft();
 });  
           leftButton.onmouseup =  function(){
@@ -182,7 +181,6 @@ function moveup() {
 }
 function moveleft() {
     myGamePiece.speedX = -1;
-    $("left").on("click");
     clearmove();
 }
 function moveright() {
