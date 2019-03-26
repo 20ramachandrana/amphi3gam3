@@ -118,16 +118,16 @@ function ifMobile(){
             }  ; 
              var code = e.keyCode ? e.keyCode : e.which;
             if (code == 39) {
-      moveright();
+             moveright();
             window.onkeyup = function(e){
                 clearmove();
-            }  ; 
-    } 
+            }  ;
         else if (code == 37) {
       moveleft();
             window.onkeyup = function(e){
                 clearmove();
             }  ; 
+    }  
     } 
         else if (code == 38) {
       moveup();
