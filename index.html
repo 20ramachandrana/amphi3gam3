@@ -147,11 +147,16 @@ function ifMobile(){
           var leftTxt = document.createTextNode("LEFT");
           leftButton.appendChild(leftTxt);
           document.getElementById("bbbb").appendChild(leftButton);
-   
-        $("left").click(function(){
-      $("left").on("click", moveleft());        
-      $("left").off("click");
-            clearmove();
+      $("left").on("touchstart mouseenter", function(){
+          moveleft();
+       $("left").off("touchstart mouseenter");
+          
+      } );   
+        $("left").on("touchend mouseleave", function(){
+          clearmove();
+          $("left").off("touchend mouseleave");
+      }));
+                
 });  
           leftButton.onmouseup =  function(){
             clearmove();
