@@ -148,16 +148,13 @@ function ifMobile(){
           document.getElementById("bbbb").appendChild(leftButton);
       $("left").on("touchstart", function(){
           moveleft();
-       $("left").off("touchstart");
           
       } );   
        $("left").on("touchend", function(){
           clearmove();
-          $("left").off("touchend");
+         
       });  
-          leftButton.onmouseup =  function(){
-            clearmove();
-        };
+         
           var upButton = document.createElement("up");
           var upTxt = document.createTextNode("UP");
           upButton.appendChild(upTxt);
