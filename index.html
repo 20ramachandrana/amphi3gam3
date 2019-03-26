@@ -147,9 +147,8 @@ function ifMobile(){
           var leftTxt = document.createTextNode("LEFT");
           leftButton.appendChild(leftTxt);
           document.getElementById("bbbb").appendChild(leftButton);
-        leftButton.onmousedown = function(){
-            moveleft();
-        };
+       $("left").on("click", moveleft());
+       
           leftButton.onmouseup =  function(){
             clearmove();
         };
