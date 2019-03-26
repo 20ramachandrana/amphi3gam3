@@ -151,12 +151,10 @@ function ifMobile(){
        $("left").off("touchstart");
           
       } );   
-        $("left").on("touchend", function(){
+       $("left").on("touchend", function(){
           clearmove();
           $("left").off("touchend");
-      }));
-                
-});  
+      });  
           leftButton.onmouseup =  function(){
             clearmove();
         };
