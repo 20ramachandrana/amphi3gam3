@@ -101,6 +101,11 @@ function changeCostume(){
 }
 function ifMobile(){
     if(screen.width>1100){
+        document.getElementById("change").disabled = true;
+         document.getElementById("cement").disabled = true;
+           document.getElementById("up").disabled = true;
+         document.getElementById("left").disabled = true;
+        document.getElementById("right").disabled = true;
         window.onkeyup = function (e) {
     var code = e.keyCode ? e.keyCode : e.which;
     if (code == 69) {
@@ -137,9 +142,14 @@ function ifMobile(){
       else{
         document.getElementById("change").style.opacity = 1;
         document.getElementById("cement").style.opacity = 1;
+                   document.getElementById("up").disabled = true;
+         document.getElementById("left").disabled = true;
+        document.getElementById("right").disabled = true;
       } 
 }
     function mobileDirect(){
+        document.getElementById("change").disabled = true;
+         document.getElementById("cement").disabled = true;
          document.getElementById("change").style.opacity = 0;
           document.getElementById("cement").style.opacity = 0;
          document.getElementById("up").style.opacity = 1;
