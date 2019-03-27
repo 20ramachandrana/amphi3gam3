@@ -145,16 +145,13 @@ function ifMobile(){
           var leftButton = document.createElement("left");
           var leftTxt = document.createTextNode("LEFT");
           leftButton.appendChild(leftTxt);
-          document.getElementById("bbbb").appendChild(leftButton);
-      $("left").on("touchstart", function(){
+      document.getElementById("left").ontouchstart = function(){
           moveleft();
-          
-      } );   
-       $("left").on("touchend", function(){
+      }
+      document.getElementById("left").ontouchend = function() {
           clearmove();
-         
-      });  
-         
+      } 
+    document.getElementById("bbbb").appendChild(leftButton);      
           var upButton = document.createElement("up");
           var upTxt = document.createTextNode("UP");
           upButton.appendChild(upTxt);
