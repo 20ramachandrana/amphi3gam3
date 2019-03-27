@@ -101,11 +101,6 @@ function changeCostume(){
 }
 function ifMobile(){
     if(screen.width>1100){
-        document.getElementById("change").disabled = true;
-         document.getElementById("cement").disabled = true;
-           document.getElementById("up").disabled = true;
-         document.getElementById("left").disabled = true;
-        document.getElementById("right").disabled = true;
         window.onkeyup = function (e) {
     var code = e.keyCode ? e.keyCode : e.which;
     if (code == 69) {
@@ -140,21 +135,50 @@ function ifMobile(){
 }; 
     }
       else{
-        document.getElementById("change").style.opacity = 1;
-        document.getElementById("cement").style.opacity = 1;
-                   document.getElementById("up").disabled = true;
-         document.getElementById("left").disabled = true;
-        document.getElementById("right").disabled = true;
+          var cementButton = document.createElement("cement1");
+          var cementTxt = document.createTextNode("CHOOSE LEWK");
+          cementButton.appendChild(cementTxt);
+          document.getElementById("cemented").appendChild(cementButton);
+           document.getElementById("cemented").style.opacity =  1;
+          document.getElementById("cemented").onmousedown=mobileDirect;
+          document.getElementById("cemented").ontouchstart=mobileDirect;
+          
+          var changeButton = document.createElement("change1");
+          var changeTxt = document.createTextNode("CHANGE LEWK");
+          changeButton.appendChild(changeTxt);
+          document.getElementById("changed").appendChild(changeButton);
+           document.getElementById("changed").style.opacity =  1;
+          document.getElementById("changed").onmousedown=changeCostume;
+          document.getElementById("changed").ontouchstart=changeCostume;
       } 
 }
     function mobileDirect(){
-        document.getElementById("change").disabled = true;
-         document.getElementById("cement").disabled = true;
-         document.getElementById("change").style.opacity = 0;
-          document.getElementById("cement").style.opacity = 0;
-         document.getElementById("up").style.opacity = 1;
-        document.getElementById("left").style.opacity = 1;
-        document.getElementById("right").style.opacity = 1;
+        
+                     var leftButton = document.createElement("left1");
+          var leftTxt = document.createTextNode("LEFT");
+          leftButton.appendChild(leftTxt);
+          document.getElementById("left").appendChild(leftButton);
+           document.getElementById("left").style.opacity =  1;
+          document.getElementById("left").onmousedown=moveleft;
+        document.getElementById("left").onmouseup=clearmove;
+          document.getElementById("left").ontouchstart=moveleft;
+                    var rightButton = document.createElement("right1");
+          var rightTxt = document.createTextNode("RIGHT");
+          rightButton.appendChild(rightTxt);
+          document.getElementById("right").appendChild(rightButton);
+           document.getElementById("right").style.opacity =  1;
+          document.getElementById("right").onmousedown=moveright;
+        document.getElementById("right").onmouseup=clearmove;
+          document.getElementById("right").ontouchstart=moveright;
+                    var upButton = document.createElement("up1");
+          var upTxt = document.createTextNode("UP");
+          upButton.appendChild(upTxt);
+          document.getElementById("up").appendChild(upButton);
+           document.getElementById("up").style.opacity =  1;
+          document.getElementById("up").onmousedown=moveup;
+        document.getElementById("up").onmouseup=clearmove;
+          document.getElementById("up").ontouchstart=moveup;
+       
     }
 function moveup() {
     myGamePiece.speedY = -1; 
@@ -172,12 +196,12 @@ function clearmove() {
 </script>
     <div style="text-align:center;width:480px;">
     <br>
-    <button id = "change" style="opacity: 0;" onmousedown="changeCostume()"ontouchstart="changeCostume()">CHANGE LEWK</button>
-    <button id = "cement" style="opacity: 0;" onmousedown="mobileDirect()"ontouchstart="mobileDirect()">CHOOSE LEWK</button>
+    <button id = "changed" style="opacity: 0;"></button>
+    <button id = "cemented" style="opacity: 0;" ></button>
         <br>
-    <button id="up" style="opacity: 0;" onmousedown="moveup()" onmouseup="clearmove()" ontouchstart="moveup()">UP</button><br><br>
-  <button id = "left" style="opacity: 0;" onmousedown="moveleft()" onmouseup="clearmove()" ontouchstart="moveleft()">LEFT</button>
-  <button id="right" style="opacity: 0;" onmousedown="moveright()" onmouseup="clearmove()" ontouchstart="moveright()">RIGHT</button><br><br>
+    <button id="up" style="opacity: 0;"></button><br><br>
+  <button id = "left" style="opacity: 0;"></button>
+  <button id="right" style="opacity: 0;"></button>
     </div>
     </body>
 </html>
