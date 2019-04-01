@@ -148,7 +148,7 @@ function ifMobile(){
           document.getElementById("cemented").appendChild(cementButton);
            document.getElementById("cemented").style.opacity =  1;
           document.getElementById("cemented").onmousedown=mobileDirect;
-          document.getElementById("cemented").ontouchstart=mobileDirect;
+          document.getElementById("cemented").onclick=mobileDirect;
           
           var changeButton = document.createElement("change1");
           var changeTxt = document.createTextNode("CHANGE LEWK");
