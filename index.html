@@ -165,25 +165,22 @@ function ifMobile(){
           leftButton.appendChild(leftTxt);
           document.getElementById("left").appendChild(leftButton);
            document.getElementById("left").style.opacity =  1;
-          document.getElementById("left").onmousedown=moveleft;
+          document.getElementById("left").onclick=moveleft;
         document.getElementById("left").onmouseup=clearmove;
-          document.getElementById("left").ontouchstart=moveleft;
                     var rightButton = document.createElement("right1");
           var rightTxt = document.createTextNode("RIGHT");
           rightButton.appendChild(rightTxt);
           document.getElementById("right").appendChild(rightButton);
            document.getElementById("right").style.opacity =  1;
-          document.getElementById("right").onmousedown=moveright;
+          document.getElementById("right").onclick=moveright;
         document.getElementById("right").onmouseup=clearmove;
-          document.getElementById("right").ontouchstart=moveright;
                     var upButton = document.createElement("up1");
           var upTxt = document.createTextNode("UP");
           upButton.appendChild(upTxt);
           document.getElementById("up").appendChild(upButton);
            document.getElementById("up").style.opacity =  1;
-          document.getElementById("up").onmousedown=moveup;
+          document.getElementById("up").onclick=moveup;
         document.getElementById("up").onmouseup=clearmove;
-          document.getElementById("up").ontouchstart=moveup;
        
     }
 function moveup() {
