@@ -158,10 +158,6 @@ function ifMobile(){
       } 
 }
     function mobileDirect(){
-        var removeCement = document.getElementById("changed");
-        var removeChange = document.getElementById("cemented");
-        removeCement.parentNode.removeChild("removeCement");
-        removeChange.parentNode.removeChild("removeChange");
                      var leftButton = document.createElement("left1");
           var leftTxt = document.createTextNode("LEFT");
           leftButton.appendChild(leftTxt);
@@ -183,7 +179,10 @@ function ifMobile(){
            document.getElementById("up").style.opacity =  1;
           document.getElementById("up").onclick=moveup;
         document.getElementById("up").onmouseup=clearmove;
-       
+         var removeCement = document.getElementById("changed");
+        var removeChange = document.getElementById("cemented");
+        removeCement.parentNode.removeChild("removeCement");
+        removeChange.parentNode.removeChild("removeChange");
     }
 function moveup() {
     myGamePiece.speedY = -1; 
