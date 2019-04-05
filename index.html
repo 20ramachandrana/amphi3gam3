@@ -9,19 +9,14 @@ canvas {
 <img hidden id="nickelodeon_princess" src="https://raw.githubusercontent.com/20ramachandrana/amphi3gam3/master/pixil-frame-0%20(1).png">
  <img hidden id="leaf_princess" src="https://raw.githubusercontent.com/20ramachandrana/amphi3gam3/master/leafprincess.png">
  <img hidden id="corn_princess" src="https://raw.githubusercontent.com/20ramachandrana/amphi3gam3/master/corny.png">
-  <img hidden id="fruit_princess" src="https://raw.githubusercontent.com/20ramachandrana/amphi3gam3/master/fruitprincess.png">
-    </head>
+  </head>
 <body onload="startGame()"> 
 <script>
 var myGamePiece;
 var floor;
-var platfom
-var the;
 var counter = 0;
 function startGame() {
     myGamePiece = new component(44, 84, "https://raw.githubusercontent.com/20ramachandrana/amphi3gam3/master/pixil-frame-0%20(1).png", 20, 400, 30, "image");
-    the = new component(42, 52, "https://raw.githubusercontent.com/20ramachandrana/amphi3gam3/master/the.png", 200, 400, 100,"image");
-    platfom = new component(420, 50, "chartreuse",70, 148, 0, "");
     floor = new component(420, 30, "chartreuse", 0, 220, 0, "");
     myGameArea.start();
 }
@@ -91,8 +86,6 @@ function component(width, height, color, x, y, offset, type) {
 function updateGameArea() {
  
     myGameArea.clear();
-    the.newPos();
-    the.update();
     myGamePiece.newPos();
     myGamePiece.update();
     floor.newPos();
@@ -100,7 +93,7 @@ function updateGameArea() {
 }
 function changeCostume(){
     counter = counter+1;
-        if(counter>3){
+        if(counter>2){
             counter = 0;
         }
         myGamePiece.image.src = document.images.item(counter).src;
@@ -108,6 +101,11 @@ function changeCostume(){
 }
 function ifMobile(){
     if(screen.width>1100){
+        document.getElementById("change").disabled = true;
+         document.getElementById("cement").disabled = true;
+           document.getElementById("up").disabled = true;
+         document.getElementById("left").disabled = true;
+        document.getElementById("right").disabled = true;
         window.onkeyup = function (e) {
     var code = e.keyCode ? e.keyCode : e.which;
     if (code == 69) {
@@ -142,47 +140,24 @@ function ifMobile(){
 }; 
     }
       else{
-          var cementButton = document.createElement("cement1");
-          var cementTxt = document.createTextNode("CHOOSE LEWK");
-          cementButton.appendChild(cementTxt);
-          document.getElementById("cemented").appendChild(cementButton);
-           document.getElementById("cemented").style.opacity =  1;
-          document.getElementById("cemented").onclick=mobileDirect;
-          
-          var changeButton = document.createElement("change1");
-          var changeTxt = document.createTextNode("CHANGE LEWK");
-          changeButton.appendChild(changeTxt);
-          document.getElementById("changed").appendChild(changeButton);
-           document.getElementById("changed").style.opacity =  1;
-          document.getElementById("changed").onclick=changeCostume;
+        document.getElementById("change").style.opacity = 1;
+        document.getElementById("cement").style.opacity = 1;
+                   document.getElementById("up").disabled = true;
+         document.getElementById("left").disabled = true;
+        document.getElementById("right").disabled = true;
       } 
 }
     function mobileDirect(){
-                     var leftButton = document.createElement("left1");
-          var leftTxt = document.createTextNode("LEFT");
-          leftButton.appendChild(leftTxt);
-          document.getElementById("left").appendChild(leftButton);
-           document.getElementById("left").style.opacity =  1;
-          document.getElementById("left").onclick=moveleft;
-        document.getElementById("left").onmouseup=clearmove;
-                    var rightButton = document.createElement("right1");
-          var rightTxt = document.createTextNode("RIGHT");
-          rightButton.appendChild(rightTxt);
-          document.getElementById("right").appendChild(rightButton);
-           document.getElementById("right").style.opacity =  1;
-          document.getElementById("right").onclick=moveright;
-        document.getElementById("right").onmouseup=clearmove;
-                    var upButton = document.createElement("up1");
-          var upTxt = document.createTextNode("UP");
-          upButton.appendChild(upTxt);
-          document.getElementById("up").appendChild(upButton);
-           document.getElementById("up").style.opacity =  1;
-          document.getElementById("up").onclick=moveup;
-        document.getElementById("up").onmouseup=clearmove;
-         var removeCement = document.getElementById("changed");
-        var removeChange = document.getElementById("cemented");
-        removeCement.parentNode.removeChild("removeCement");
-        removeChange.parentNode.removeChild("removeChange");
+        document.getElementById("change").disabled = true;
+         document.getElementById("cement").disabled = true;
+         document.getElementById("up").style.opacity = 1;
+        document.getElementById("left").style.opacity = 1;
+        document.getElementById("right").style.opacity = 1;
+         document.getElementById("cement").style.opacity = 0;
+        document.getElementById("change").style.opacity = 0;
+        document.getElementById("up").disabled = false;
+         document.getElementById("left").disabled = false;
+        document.getElementById("right").disabled = false;
     }
 function moveup() {
     myGamePiece.speedY = -1; 
@@ -200,12 +175,13 @@ function clearmove() {
 </script>
     <div style="text-align:center;width:480px;">
     <br>
-    <button id = "changed" style="opacity: 0;"></button>
-    <button id = "cemented" style="opacity: 0;" ></button>
-        <br>
-    <button id="up" style="opacity: 0;"></button><br><br>
-  <button id = "left" style="opacity: 0;"></button>
-  <button id="right" style="opacity: 0;"></button>
+    <button id = "change" style="opacity: 0;" onmousedown="changeCostume()"ontouchstart="changeCostume()">CHANGE LEWK</button>
+    <button id = "cement" style="opacity: 0;" onmousedown="mobileDirect()"ontouchstart="mobileDirect()">CHOOSE LEWK</button>
+    <br>
+<button id="up" style="opacity: 0;" onmousedown="moveup()" onmouseup="clearmove()" ontouchstart="moveup()">UP</button><br><br>
+  <button id = "left" style="opacity: 0;" onmousedown="moveleft()" onmouseup="clearmove()" ontouchstart="moveleft()">LEFT</button>
+  <button id="right" style="opacity: 0;" onmousedown="moveright()" onmouseup="clearmove()" ontouchstart="moveright()">RIGHT</button><br><br>
+    
     </div>
     </body>
 </html>
