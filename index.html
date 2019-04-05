@@ -158,7 +158,8 @@ function ifMobile(){
       } 
 }
     function mobileDirect(){
-        
+        var removeCement = document.getElementById("changed");
+        removeCement.parentNode.removeChild("removeCement");
                      var leftButton = document.createElement("left1");
           var leftTxt = document.createTextNode("LEFT");
           leftButton.appendChild(leftTxt);
