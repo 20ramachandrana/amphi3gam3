@@ -11,6 +11,7 @@ canvas {
  <img hidden id="corn_princess" src="https://raw.githubusercontent.com/20ramachandrana/amphi3gam3/master/corny.png">
    <img hidden id="fruit_princess" src="https://raw.githubusercontent.com/20ramachandrana/amphi3gam3/master/fruitprincess.png">
   <img hidden id="gurt_princess" src="https://raw.githubusercontent.com/20ramachandrana/amphi3gam3/master/gurt.png">
+   <img hidden id="bread_princess" src="https://raw.githubusercontent.com/20ramachandrana/amphi3gam3/master/breadprincess.png">
     </head>
 <body onload="startGame()"> 
 <script>
@@ -95,7 +96,7 @@ function updateGameArea() {
 }
 function changeCostume(){
     counter = counter+1;
-        if(counter>4){
+        if(counter>5){
             counter = 0;
         }
         myGamePiece.image.src = document.images.item(counter).src;
