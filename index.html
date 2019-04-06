@@ -96,6 +96,12 @@ function updateGameArea() {
 }
 function changeCostume(){
     counter = counter+1;
+    if(counter==5) {
+        myGamePiece.width = 66;
+    }
+    else{
+        myGamePiece.width = 44;
+    }
         if(counter>5){
             counter = 0;
         }
