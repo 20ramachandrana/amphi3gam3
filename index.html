@@ -74,7 +74,6 @@ function component(width, height, color, x, y, offset, type) {
     this.x += this.speedX;
     this.y += this.speedY + this.gravitySpeed;
     this.hitBottom();
-       
   }
   this.hitBottom = function() {
     var rockbottom = myGameArea.canvas.height - this.offset - this.height;
@@ -83,11 +82,25 @@ function component(width, height, color, x, y, offset, type) {
       this.gravitySpeed = -(this.gravitySpeed * this.bounce);
     }
   }
+  this.hitSide = function() {
+      if(this.x<=0){
+          this.x = 1;
+      }
+    if(this.x>=(myGameArea.canvas.width-this.width)){
+          this.x = myGameArea.canvas.width-this.width-1;
+      }
+  }
+  this.hitRight = function() {
+      if(this.x>=this.canvas.width){
+          this.x = this.canvas.width -1;
+      }
+  }
 }  
 function updateGameArea() {
  
     myGameArea.clear();
     myGamePiece.newPos();
+    myGamePiece.hitSide();
     myGamePiece.update();
     floor.newPos();
     floor.update();
