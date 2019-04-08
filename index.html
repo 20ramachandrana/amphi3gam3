@@ -175,6 +175,15 @@ function ifMobile(){
              clearmove();
          };
         document.getElementById("right").style.opacity = 1;
+          document.getElementById("right").disabled = false;
+         document.getElementById("right").ontouchstart = function(e){
+                e.preventDefault();
+             moveright();
+         };
+        document.getElementById("right").ontouchend = function(e){
+             e.preventDefault();
+             clearmove();
+         };
          document.getElementById("cement").style.opacity = 0;
         document.getElementById("change").style.opacity = 0;
     }
