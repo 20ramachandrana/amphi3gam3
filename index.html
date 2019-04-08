@@ -184,6 +184,16 @@ function ifMobile(){
              e.preventDefault();
              clearmove();
          };
+                document.getElementById("up").style.opacity = 1;
+          document.getElementById("up").disabled = false;
+         document.getElementById("up").ontouchstart = function(e){
+                e.preventDefault();
+             moveup();
+         };
+        document.getElementById("up").ontouchend = function(e){
+             e.preventDefault();
+             clearmove();
+         };
          document.getElementById("cement").style.opacity = 0;
         document.getElementById("change").style.opacity = 0;
     }
