@@ -155,7 +155,7 @@ function ifMobile(){
     }
       else{
         document.getElementById("change").style.opacity = 1;
-        document.getElementById("cement").style.opacity = 1;
+       document.getElementById("cement").style.opacity = 1;
                    document.getElementById("up").disabled = true;
          document.getElementById("left").disabled = true;
         document.getElementById("right").disabled = true;
@@ -165,6 +165,13 @@ function ifMobile(){
         document.getElementById("change").disabled = true;
          document.getElementById("cement").disabled = true;
          document.getElementById("up").style.opacity = 1;
+         document.getElementById("left").ontouchstart.preventDefault();
+         document.getElementById("left").ontouchstart = function(e){
+             moveleft();
+         };
+        document.getElementById("left").ontouchend = function(e){
+             clearmove();
+         };
         document.getElementById("left").style.opacity = 1;
         document.getElementById("right").style.opacity = 1;
          document.getElementById("cement").style.opacity = 0;
@@ -193,8 +200,8 @@ function clearmove() {
     <button id = "cement" style="opacity: 0;" onmousedown="mobileDirect()">CHOOSE LEWK</button>
     <br>
 <button id="up" style="opacity: 0;" ontouchstart="moveup()" ontouchend="clearmove()">UP</button><br><br>
-  <button id = "left" style="opacity: 0;" onmousedown="moveleft()" >LEFT</button>
-  <button id="right" style="opacity: 0;" onmousedown="moveright()">RIGHT</button><br><br>
+  <button id = "left" style="opacity: 0;">LEFT</button>
+  <button id="right" style="opacity: 0;" ontouchstart="moveright()" ontouchend="clearmove()">RIGHT</button><br><br>
     
     </div>
     </body>
