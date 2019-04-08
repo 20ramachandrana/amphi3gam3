@@ -164,10 +164,10 @@ function ifMobile(){
     function mobileDirect(){
         document.getElementById("change").disabled = true;
          document.getElementById("cement").disabled = true;
-         document.getElementById("up").style.opacity = 1;
            document.getElementById("left").style.opacity = 1;
          document.getElementById("left").ontouchstart.preventDefault();
          document.getElementById("left").ontouchstart = function(e){
+ 
              moveleft();
          };
         document.getElementById("left").ontouchend = function(e){
