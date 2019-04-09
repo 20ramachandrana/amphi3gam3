@@ -1,3 +1,5 @@
+
+
 <html> 
 <head>
 <style>
@@ -10,11 +12,16 @@ canvas {
  <img hidden id="leaf_princess" src="https://raw.githubusercontent.com/20ramachandrana/amphi3gam3/master/leafprincess.png">
  <img hidden id="corn_princess" src="https://raw.githubusercontent.com/20ramachandrana/amphi3gam3/master/corny.png">
    <img hidden id="fruit_princess" src="https://raw.githubusercontent.com/20ramachandrana/amphi3gam3/master/fruitprincess.png">
+<img hidden id="gurt_princess" src="https://raw.githubusercontent.com/20ramachandrana/amphi3gam3/master/gurt.png">
+<img hidden id="bread_princess" src="https://raw.githubusercontent.com/20ramachandrana/amphi3gam3/master/breadprincess.png">
   </head>
 <body onload="startGame()"> 
 <script>
 var myGamePiece;
 var floor;
+var scenum =0;
+var scen;
+var toggle =0;
 var counter = 0;
 function startGame() {
     myGamePiece = new component(44, 84, "https://raw.githubusercontent.com/20ramachandrana/amphi3gam3/master/pixil-frame-0%20(1).png", 20, 400, 30, "image");
@@ -87,13 +94,9 @@ function component(width, height, color, x, y, offset, type) {
           this.x = 1;
       }
     if(this.x>=(myGameArea.canvas.width-this.width)){
-          this.x = myGameArea.canvas.width-this.width-1;
-      }
-  }
-  this.hitRight = function() {
-      if(this.x>=this.canvas.width){
-          this.x = this.canvas.width -1;
-      }
+          this.x=1;
+clearmove();
+     }
   }
 }  
 function updateGameArea() {
@@ -107,9 +110,15 @@ function updateGameArea() {
 }
 function changeCostume(){
     counter = counter+1;
-        if(counter>3){
+        if(counter>5){
             counter = 0;
         }
+if(counter==5){
+myGamePiece.width = 95;
+}
+else{
+myGamePiece.width =44;
+}
         myGamePiece.image.src = document.images.item(counter).src;
         myGamePiece.update();
 }
