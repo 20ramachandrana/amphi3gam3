@@ -17,8 +17,7 @@ canvas {
 <script>
 var myGamePiece;
 var floor;
-var scenum =0;
-var scen;
+var scenenum =1;
 var toggle =0;
 var counter = 0;
 function startGame() {
@@ -72,6 +71,11 @@ function component(width, height, color, x, y, offset, type) {
             ctx.fillRect(this.x, this.y, this.width, this.height);
         }
     }
+  this.change = function(s){
+    ctx = myGameArea.context;
+    ctx.fillStyle = s;
+            ctx.fillRect(this.x, this.y, this.width, this.height);
+}
    this.newPos = function() {
        if(this.offset!=0){
     this.gravitySpeed += this.gravity;
@@ -92,8 +96,25 @@ function component(width, height, color, x, y, offset, type) {
           this.x = 1;
       }
     if(this.x>=(myGameArea.canvas.width-this.width)){
+        scenenum+=1;
           this.x=1;
-clearmove();
+        clearmove();
+        toggle = 1; 
+        if(scenenum==2){
+            if(toggle == 1){
+                toggle = 0;
+            }
+            if(toggle == 0){
+                 floor = new component(420,250,"https://raw.githubusercontent.com/20ramachandrana/amphi3gam3/master/corncutscene.png",0,0,0,"image");
+                floor.update();
+                window.onclick = function(e){
+                    floor = new component(420, 30, "chartreuse", 0, 220, 0, "");
+                    floor.update();
+                    window.onclick = function(e){
+                    }
+                }
+            }
+        }
      }
   }
 }  
