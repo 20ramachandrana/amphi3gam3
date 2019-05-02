@@ -102,7 +102,7 @@ function component(width, height, color, x, y, offset, type) {
           this.x=1;
         clearmove();
         toggle = 1; 
-        if(scenenum==1){
+        if(scenenum==2){
             if(toggle == 1){
                 toggle = 0;
             }
@@ -110,11 +110,10 @@ function component(width, height, color, x, y, offset, type) {
                  floor = new component(512,250,"https://raw.githubusercontent.com/20ramachandrana/amphi3gam3/master/corncutscene.png",0,0,0,"image");
                 floor.update();
                 window.onclick = function(e){
-                   floor = new component(512, 22, "silver", 0, 228, 0, "");
+                    floor = new component(512, 22, "silver", 0, 228, 0, "");
                     floor.update();
                     window.onclick = function(e){
                     }
-                    
                 }
             }
         }
@@ -122,7 +121,6 @@ function component(width, height, color, x, y, offset, type) {
   }
 }  
 function updateGameArea() {
- 
     myGameArea.clear();
     myGamePiece.newPos();
     myGamePiece.hitSide();
@@ -131,6 +129,9 @@ function updateGameArea() {
     the.update();
     floor.newPos();
     floor.update();
+    if(collide(the) && toggle==0 && scenenum==1){
+        a();
+        } 
 }
 function changeCostume(){
     counter = counter+1;
@@ -146,6 +147,7 @@ myGamePiece.width =44;
         myGamePiece.image.src = document.images.item(counter).src;
         myGamePiece.update();
 }
+
 function ifMobile(){
     if(screen.width>1100){
         document.getElementById("change").disabled = true;
@@ -230,6 +232,9 @@ function ifMobile(){
          document.getElementById("cement").style.opacity = 0;
         document.getElementById("change").style.opacity = 0;
     }
+ function collide(c){
+      return (myGamePiece.x+ myGamePiece.width -c.x) == 0;
+  }
 function moveup() {
     myGamePiece.speedY = -1; 
 }
@@ -252,7 +257,7 @@ function clearmove() {
 <button id="up" style="opacity: 0;" ontouchstart="moveup()" ontouchend="clearmove()">UP</button><br><br>
   <button id = "left" style="opacity: 0;">LEFT</button>
   <button id="right" style="opacity: 0;" ontouchstart="moveright()" ontouchend="clearmove()">RIGHT</button><br><br>
-    
     </div>
+<p id = "chat"></p>
     </body>
 </html>
