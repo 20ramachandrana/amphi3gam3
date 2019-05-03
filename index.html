@@ -113,6 +113,7 @@ function component(width, height, color, x, y, offset, type) {
                     floor = new component(512, 22, "silver", 0, 228, 0, "");
                     floor.update();
                     window.onclick = function(e){
+ update("https://raw.githubusercontent.com/20ramachandrana/the/master/theroom.png");
                     }
                 }
             }
@@ -132,6 +133,7 @@ function updateGameArea() {
     if(collide(the) && toggle==0 && scenenum==1){
         the.x = 700;
         alert("hey!!!! ");
+        clearmove();
         } 
 }
 function changeCostume(){
@@ -148,7 +150,6 @@ myGamePiece.width =44;
         myGamePiece.image.src = document.images.item(counter).src;
         myGamePiece.update();
 }
-
 function ifMobile(){
     if(screen.width>1100){
         document.getElementById("change").disabled = true;
@@ -233,8 +234,14 @@ function ifMobile(){
          document.getElementById("cement").style.opacity = 0;
         document.getElementById("change").style.opacity = 0;
     }
+function update(str){
+    newstr = "url(" + str + ")";
+    document.getElementById("canvas").style.background = "newstr";
+updateGameArea();
+clearmove();
+}
  function collide(c){
-      return (myGamePiece.x+ myGamePiece.width -c.x) == 0;
+      return (myGamePiece.x+ myGamePiece.width -c.x) == 0;
   }
 function moveup() {
     myGamePiece.speedY = -1; 
