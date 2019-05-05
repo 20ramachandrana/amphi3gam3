@@ -3,7 +3,6 @@
 <style>
 canvas {
     border:1px solid #d3d3d3;
-    background-image:url(https://raw.githubusercontent.com/20ramachandrana/the/master/downtownbotson.png);
 }
 </style>
 <img hidden id="nickelodeon_princess" src="https://raw.githubusercontent.com/20ramachandrana/amphi3gam3/master/pixil-frame-0%20(1).png">
@@ -15,6 +14,7 @@ canvas {
   </head>
 <body onload="startGame()"> 
 <script>
+var bkg;
 var myGamePiece;
 var the;
 var floor;
@@ -22,9 +22,10 @@ var scenenum =1;
 var toggle =0;
 var counter = 0;
 function startGame() {
+    bkg = new component(512, 250, "https://raw.githubusercontent.com/20ramachandrana/the/master/downtownbotson.png", 0,0,0, "image");
     myGamePiece = new component(44, 84, "https://raw.githubusercontent.com/20ramachandrana/amphi3gam3/master/pixil-frame-0%20(1).png", 20, 400, 22, "image");
     the = new component(42, 52, "https://raw.githubusercontent.com/20ramachandrana/the/master/the.png", 200, 400, 24, "image");
-    floor = new component(512, 22, "silver", 0, 228, 0, "");
+    floor = new component(512, 23, "silver", 0, 228, 0, "");
     myGameArea.start();
 }
 var myGameArea = {
@@ -109,13 +110,9 @@ function component(width, height, color, x, y, offset, type) {
             if(toggle == 0){
                  floor = new component(512,250,"https://raw.githubusercontent.com/20ramachandrana/amphi3gam3/master/corncutscene.png",0,0,0,"image");
                 floor.update();
-                window.onclick = function(e){
-                    floor = new component(512, 22, "silver", 0, 228, 0, "");
-                    floor.update();
-                    window.onclick = function(e){
- update("https://raw.githubusercontent.com/20ramachandrana/the/master/theroom.png");
-                    }
-                }
+                window.setTimeout(function(){
+                     floor = new component(512, 22, "#b97a57", 0, 228, 0, ""); floor.update();}, 2000);
+                bkg = new component(512, 250, "https://raw.githubusercontent.com/20ramachandrana/the/master/theroom.png", 0,0,0, "image");
             }
         }
      }
@@ -123,6 +120,8 @@ function component(width, height, color, x, y, offset, type) {
 }  
 function updateGameArea() {
     myGameArea.clear();
+    bkg.newPos();
+    bkg.update();
     myGamePiece.newPos();
     myGamePiece.hitSide();
     myGamePiece.update();
@@ -234,15 +233,12 @@ function ifMobile(){
          document.getElementById("cement").style.opacity = 0;
         document.getElementById("change").style.opacity = 0;
     }
-function update(str){
-    newstr = "url(" + str + ")";
-    document.getElementById("canvas").style.background = newstr;
-updateGameArea();
-clearmove();
-}
  function collide(c){
       return (myGamePiece.x+ myGamePiece.width -c.x) == 0;
   }
+    function a(){
+               
+    }
 function moveup() {
     myGamePiece.speedY = -1; 
 }
