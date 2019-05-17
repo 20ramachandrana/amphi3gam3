@@ -116,6 +116,20 @@ function component(width, height, color, x, y, offset, type) {
                 window.setTimeout(function(){
                      floor = new component(512, 22, "silver", 0, 228, 0, ""); floor.update();}, 2000);
                 bkg = new component(512, 250, "https://lh3.googleusercontent.com/-aFFmbrjl_eA/XNXW_pfBQuI/AAAAAAAAA9o/GJEnOzTTbVsvOg9aGoR5RPTbF6Umg6nRACK8BGAs/s0/ghrhhrghng.png", 0,0,0, "image");
+            toggle = 1; 
+}
+        }
+
+        if(scenenum==3){
+            if(toggle == 1){
+                toggle = 0;
+            }
+            if(toggle == 0){
+                 floor = new component(512,250,"https://raw.githubusercontent.com/20ramachandrana/amphi3gam3/master/corncutscene.png",0,0,0,"image");
+                floor.update();
+                window.setTimeout(function(){
+                     floor = new component(512, 22, "#b97a57", 0, 228, 0, ""); floor.update();}, 2000);
+                bkg = new component(512, 250, "https://raw.githubusercontent.com/20ramachandrana/the/master/theroom.png", 0,0,0, "image");
             }
         }
      }
